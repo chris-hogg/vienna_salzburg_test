@@ -211,9 +211,7 @@ function playAnimation(){
 autoPlay(2000);
 }
 
-//TODO: make this a function. so it can create the scenes automatically based on the scene number, the changeCapital.
-// TODO: Make sure one can see the narration.
-// TODO: Each scene will have an overall function associated with it. This can be a combination of the functions sceneFunction.
+// TODO: Combinig many animationfunctions in one scene.
 
 
 // TODO: What to do if there is multiple animations in the same scene? Array of arrays?
@@ -229,10 +227,11 @@ function addAnimationToSceneObject (sceneNumber) {
 function CreateSceneButton(number){
     addAnimationToSceneObject(number);
     var sceneObject = scenesObjectArray[number-1];
-    console.log(sceneObject);
+    var sceneObjectAnimation = function(){ return sceneObject.animation_function(sceneObject.animation_parameter);}
     var newButton= $('<button> Scene '+ number + '</button>').addClass("button-scene").attr("id","button-scene-" + number);
     $("#buttons-div").append(newButton);
-    $("#button-scene-" + number).click(function(){changeNarration(questionsArray[number-1],sceneObject.a1);sceneObject.animation_function(sceneObject.animation_parameter);});
+    // TODO: to run automatically bascially involves the line below being set on a delay.
+    $("#button-scene-" + number).click(function(){changeNarration(questionsArray[number-1],sceneObject.a1); sceneObjectAnimation()});
 };
 
 
@@ -243,10 +242,8 @@ function createAllButtons(){
     CreateSceneButton(sceneNumber);
 }};
 
-// TODO: Rename the functions which will cause animation.
-
-
 // Scene Function Buttons- ths are the animations/ transitions.
+// TODO: Rename the functions which will cause animation.
 
 function scenceFunctionToggle(id){
     $("#" +id).toggle()
