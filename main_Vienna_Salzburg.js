@@ -227,11 +227,11 @@ function addAnimationToSceneObject (sceneNumber) {
 function CreateSceneButton(number){
     addAnimationToSceneObject(number);
     var sceneObject = scenesObjectArray[number-1];
-    var sceneObjectAnimation = function(){ return sceneObject.animation_function(sceneObject.animation_parameter);}
+    // var sceneObjectAnimation = function(){ return sceneObject.animation_function(sceneObject.animation_parameter);}
     var newButton= $('<button> Scene '+ number + '</button>').addClass("button-scene").attr("id","button-scene-" + number);
     $("#buttons-div").append(newButton);
     // TODO: to run automatically bascially involves the line below being set on a delay.
-    $("#button-scene-" + number).click(function(){changeNarration(questionsArray[number-1],sceneObject.a1); sceneObjectAnimation()});
+    $("#button-scene-" + number).click(function(){changeNarration(questionsArray[number-1],sceneObject.a1); sceneObject.animation_function(sceneObject.animation_parameter);});
 };
 
 
@@ -290,4 +290,4 @@ $("#button-scene-four").click(function(){zoomInPlace(createPlace(8));changeNarra
 $("#button-scene-five").click(function(){$("#symbol-dollar").toggle();changeNarration(questionsArray[4],scenesObjectArray[4].a1)});
 $("#button-scene-six").click(function(){$("#Wien").removeClass('active').addClass('high-pop');changeNarration(questionsArray[5],scenesObjectArray[5].a1)});
 $("#button-scene-seven").click(function(){zoomInPlace(createPlace(4));$("#Salzburg").toggle();changeNarration(questionsArray[6],scenesObjectArray[6].a1)});
-$("#button-scene-eight").click(function(){zoomInPlace(createPlace(4));changeCapital("Vienna");changeNarration(questionsArray[6],scenesObjectArray[6].a1)});
+$("#button-scene-eight").click(function(){changeNarration(questionsArray[7],scenesObjectArray[7].a1);zoomInPlace(createPlace(4));changeCapital("Vienna");});

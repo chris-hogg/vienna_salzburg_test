@@ -3,7 +3,7 @@ Example story showing a change in capital between Vienna and Salzburg.
 It is very simple at the moment - not much can change by the user except the prompt.
 The second line of buttons has better animations but is not dynamically created.
 ### Instructions
-Load it and run with serve.bat (on windows).
+Open it and run with serve.bat (on windows).
 ## Questions
 - shall i continue to develop this?
 - shall i make it into the world map?
@@ -12,7 +12,7 @@ Load it and run with serve.bat (on windows).
 
 
 ## For the future
-- Implement it so that it runs automatically. could
+- Implement it so that it runs automatically. 
 - MAKE THE CODE TIDIER! (ignore turning it into modules at the moment I just want this to be clear and extensible. In particular look at the TODO section in the js.
 - For the future (i.e saving), all you have to do is create a database of multiple sceneObjectArray.
 - Do this not just for Austria, but for other countries too. Next- focus on a world map.
