@@ -106,18 +106,22 @@ var places = [
   }
 ]
 
-d3.json("austria.topojson", function(error, locationFile) {
+// d3.json("austria.topojson", function(error, locationFile) {
+d3.json("world.topojson", function(error, locationFile) {
   if (error) throw error;
   g.selectAll("path")
-      .data(topojson.feature(locationFile, locationFile.objects.counties).features)
+    //   .data(topojson.feature(locationFile, locationFile.objects.counties).features)
+      .data(topojson.feature(locationFile, locationFile.objects.iso_a3).features)
     .enter().append("path")
       .attr("d", path)
       .attr("class", "feature")
-      .attr("id",  function(d,i) {return d.properties.name})
+    //   .attr("id",  function(d,i) {return d.properties.name})
+      .attr("id",  function(d,i) {return d.properties.iso_a3})
       .on("click", zoomInPlace);
 
   g.append("path")
-      .datum(topojson.mesh(locationFile, locationFile.objects.counties, function(a, b) { return a !== b; }))
+    //   .datum(topojson.mesh(locationFile, locationFile.objects.counties, function(a, b) { return a !== b; }))
+      .datum(topojson.mesh(locationFile, locationFile.objects.iso_a3, function(a, b) { return a !== b; }))
       .attr("class", "mesh")
       .attr("d", path);
 
@@ -152,7 +156,8 @@ d3.json("austria.topojson", function(error, locationFile) {
         .attr("id","symbol-dollar")
         .text("$$$");
 
- countiesVar = topojson.feature(locationFile, locationFile.objects.counties)
+ // countiesVar = topojson.feature(locationFile, locationFile.objects.counties)
+ countiesVar = topojson.feature(locationFile, locationFile.objects.iso_a3)
 });
 
 
@@ -254,7 +259,8 @@ function sceneFunctionAddClass(id){
 }
 
 function zoomInPlace(d) {
-    var linePath = document.getElementById(d.properties.name);
+    // var linePath = document.getElementById(d.properties.name);
+    var linePath = document.getElementById(d.properties.adm0_a3);
   if (active.node() === linePath) return reset();
   active.classed("active", false);
  active = d3.select(linePath).classed("active", true);
